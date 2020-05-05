@@ -1,0 +1,17 @@
+{
+  "name": "avaliacao1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/andrerrh/avaliacao1.git",
+  "author": "andrerrh <andre.rodrigues.he@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.3"
+  },
+  "scripts": {
+      "start": "node index.js",
+      "dev": "nodemon index.js"
+  }
+}
+
