@@ -3,33 +3,36 @@ const express = require('express');
 const server = express();
 server.use(express.json());
 
+
+//Formato de data(MM/DD/YYYY)
 var jogos = [
     {
         id: 1,
         nome: "Counter-Strike",
         categoria: "FPS",
         desenvolvedora: "Valve",
-        dataLancamento: "08/11/2000"
+        dataLancamento: new Date("11/08/2000")
     },
     {
         id: 2,
         nome: "Need For Speed Underground 2",
         categoria: "Corrida",
         desenvolvedora: "EA Games",
-        dataLancamento : "09/11/2004"
+        dataLancamento: new Date("11/09/2004")
     },
     {
         id: 3,
         nome: "Age of Empires II",
         categoria: "RTS",
         desenvolvedora: "Ensemble Studios",
-        dataLancamento: "30/09/1999"
+        dataLancamento: new Date("09/30/1999")
     }
 ]
 
 
 server.post('/jogos', function(request, response) {
     const novoJogo = request.body;
+    novoJogo.dataLancamento = new Date(request.body.dataLancamento);
     jogos.push(novoJogo);
     return response.status(201).send();
 })
@@ -50,7 +53,7 @@ server.put('/jogos/:id', function(request, response) {
             e.nome = novoJogo.nome;
             e.categoria = novoJogo.categoria;
             e.desenvolvedora = novoJogo.desenvolvedora;
-            e.dataLancamento = novoJogo.dataLancamento;
+            e.dataLancamento = new Date(novoJogo.dataLancamento);
         }
     })
     return response.send();
